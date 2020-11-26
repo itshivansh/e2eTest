@@ -33,16 +33,19 @@ describe('MoviesListComponent', () => {
 
   // test to check ngOnInit method existence
   it('ngOnInit() should exists', () => {
+    expect(component.ngOnInit).toBeTruthy();
   
   });
 
      // test to check deleteMovie is calling MovieService or not
   it('deleteMovie() should call MovieService to delete an Movie', () => {
-  
+    component.deleteMovie(1);
+    expect(movieService.deleteMovie).toHaveBeenCalled();
     });
 
   // test to check ngOnInit is calling MovieService or not
   it('ngOnInit() should call MovieService to get all Movies', () => {
-  
+  component.ngOnInit();
+  expect(movieService.getMovies).toHaveBeenCalled();
   });
 });

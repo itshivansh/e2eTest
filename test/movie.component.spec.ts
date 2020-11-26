@@ -33,12 +33,32 @@ describe('MovieComponent', () => {
   });
 
   // test to check onSubmit method existence
+  it('should have onSubmit()',()=>{
+    expect(component.onSubmit).toBeTruthy();
+  })
 
   // test to check ngOnInit method existence
- 
+  it('should have ngOnInit()',()=>{
+    expect(component.ngOnInit).toBeTruthy();
+  })
+
   // test to check clearForm method existence
-  
+  it('should have onSubmit()',()=>{
+    expect(component.clearForm).toBeTruthy();
+  })
+
   // test to check onSubmit is verifying form is valid or not
+  it('onSubmit() should verify form is valid or not',()=>{
+    component.form.title='Movie1';
+    component.form.story='This is the story of Movie1';
+    component.onSubmit();
+    expect(component.message).toEqual('Title and Story should not be empty!!! Please verify details');
+
+  })
  
   // test to check onSubmit is calling MovieService or not
+  it('should check onSubmit is calling Movieservice',()=>{
+    component.onSubmit();
+    expect(movieService).toHaveBeenCalled;
+  })
 });
